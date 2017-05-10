@@ -154,7 +154,7 @@ class Akamai {
 
 
     set key(key){
-        var regex = new RegExp('^[a-fA-F0-9]+$');
+        const regex = new RegExp('^[a-fA-F0-9]+$');
         if (key.match(regex) && (key.length %2) == 0) {
             this._key = key;
         } else {
@@ -204,7 +204,7 @@ class Akamai {
     }
 
     generateToken (){
-        let h2b = str => {
+        const h2b = str => {
             let bin = '',
                 pointer = 0;
                 do{
@@ -216,10 +216,10 @@ class Akamai {
             return bin;
         };
 
-        let token = this.getIpField() + this.getStartTimeField() + this.getExprField() + this.getAclField() + this.getSessionIdField() + this.getDataField();
-        let digest = String(token) + this.getUrlField() + this.getSaltField();
-        let regex = new RegExp(this.delimiter + "$");
-        let signature = CryptoJS.HmacSHA256(digest.replace(regex, ''), h2b(this.key));
+        let token = this.getIpField() + this.getStartTimeField() + this.getExprField() + this.getAclField() + this.getSessionIdField() + this.getDataField(),
+            digest = String(token) + this.getUrlField() + this.getSaltField(),
+            regex = new RegExp(this.delimiter + "$"),
+            signature = CryptoJS.HmacSHA256(digest.replace(regex, ''), h2b(this.key));
         return token + 'hmac=' + signature;
     }
 }
