@@ -23,6 +23,6 @@ var config = {
     };
  
  
- var akamai = new Akamai.default(config),
+ var akamai = new Akamai(config),
      token = akamai.generateToken();
 ```
