@@ -172,7 +172,7 @@ class Akamai {
     }
 
     getSaltField(){
-        return this.salt ? 'salt='.this.salt + this.delimiter : '';
+        return this.salt ? 'salt=' + this.salt + this.delimiter : '';
     }
 
     set salt(val){
