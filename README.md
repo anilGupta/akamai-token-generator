@@ -13,7 +13,7 @@ Or with **npm**:
 ## Uses
 
 ```js
-var Akamai = require('akamai-auth-token').default;
+var Akamai = require('akamai-auth-token');
 var config = {
          algorithm : 'SHA256',
          acl : '/*',
